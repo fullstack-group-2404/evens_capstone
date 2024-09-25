@@ -4,6 +4,11 @@ import Users from "./pages/Users";
 import Businesses from "./pages/Businesses";
 import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
+<<<<<<< Updated upstream
+=======
+import Login from "./pages/Login";
+import Register from "./pages/Register";
+>>>>>>> Stashed changes
 
 function App() {
   const [auth, setAuth] = useState({});
@@ -57,7 +62,7 @@ function App() {
 
   return (
     <>
-      <h1>Acme Business Reviews</h1>
+      <h1>Seen It Business Reviews</h1>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/businesses">Businesses ({businesses.length})</Link>
@@ -65,7 +70,11 @@ function App() {
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
         ) : (
+<<<<<<< Updated upstream
           <Link to="/">Register/Login</Link>
+=======
+          <Link to="/login">Login</Link>
+>>>>>>> Stashed changes
         )}
       </nav>
       {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
@@ -88,7 +97,26 @@ function App() {
         />
         <Route path="/users" element={<Users users={users} />} />
         {!!auth.id && <Route path="/createReview" element={<CreateReview />} />}
+<<<<<<< Updated upstream
       </Routes>
+=======
+
+        <Route path="/login" element={<Login 
+        authAction={authAction}
+        auth={auth}
+        businesses={businesses}
+        users={users}
+        reviews={reviews}/>}/>
+
+        <Route path="/register" element={<Register
+        authAction={authAction}
+        auth={auth}
+        businesses={businesses}
+        users={users}
+        reviews={reviews}/>} />
+        
+        </Routes>
+>>>>>>> Stashed changes
     </>
   );
 }

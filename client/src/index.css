@@ -1,6 +1,13 @@
 body {
   font-family: verdana;
+  background-color: #FEE715;
+  color: #101820;
 }
+
+h1{
+  text-align: center;
+}
+
 form {
   display: flex;
   flex-direction: column;
