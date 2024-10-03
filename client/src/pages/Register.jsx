@@ -1,27 +1,21 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthForm from "../components/AuthForm/AuthForm";
 
-const Register = ({auth, authAction, users}) => {
-    return (
-        <div>
-            <h1>Register for Business Reviews!</h1>
-        
-
-            {!auth.id ? (
+const Register = ({ auth, authAction}) => {
+  return (
+    <div>
+      <h1>Register for Business Reviews!</h1>
+      {!auth.id ? (
         <>
-          
           <AuthForm authAction={authAction} mode="register" />
         </>
       ) : null}
 
 
-        </div>
+    </div>
 
-    );
+  );
 
 }
-
-//changes made 
-
 
 export default Register;

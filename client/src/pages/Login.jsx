@@ -1,31 +1,20 @@
-import { Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 import AuthForm from "../components/AuthForm/AuthForm";
 
-const Login = ({auth, authAction, users}) => {
-    return (
-        <div>
-            <h1>Login or Register</h1>
-        
-
-            {!auth.id ? (
+const Login = ({ auth, authAction, users }) => {
+  return (
+    <div>
+      <h1>Login or Register</h1>
+      {!auth.id ? (
         <>
           <AuthForm authAction={authAction} mode="login" />
-          
         </>
       ) : null}
-        <><Link to="/Register">Don't Have an account? Register</Link></>
-        
-    
+      <><Link to="/Register">Don't Have an account? Register</Link></>
+    </div>
 
-
-        </div>
-
-    );
+  );
 
 }
-
-//changes made 
-// more changes
-
 
 export default Login;

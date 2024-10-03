@@ -6,48 +6,21 @@ import axios from "axios";
 // more change s 
 
 
-const Users = async => {
-  const [usersData, setUsersData] = useState([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+function Users ({users}){
 
-  useEffect(() => {
-    const getUsers = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/users`)
-        if (!response.ok) {
-          throw new Error('failed to get users');
-        }
-        const data = await response.json();
-        console.log(data);
-        setUsersData(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
-      }
-    }
-    getUsers();
-  }, []);
-
+     
   return (<div>
-    <h1>Seen It has {usersData.length} users!</h1>
-
-
-
-    {usersData?.map(function (data) {
+    <h1>Seen It has {users.length} users!</h1>
+    {users?.map(function (person) {
       return (
-        <>
 
-
-          <div className="main-layout">
-            <div className="user-card" key={data}>
-              Name: {data.username}
+          <div className="main-layout" key={person.id}>
+            <div className="user-card">
+              Name: {person.username}
 
             </div>
 
           </div>
-        </>
       )
     })}
   </div>

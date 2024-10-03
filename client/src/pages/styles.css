@@ -1,0 +1,35 @@
+.main-layout{
+    
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
+}
+
+.display-card{
+    color: black;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    height: 670px;
+    min-width: 30%;
+    max-width: 30%;
+    text-align: center;
+
+}
+
+.review-form{
+    input[type=text]{
+        width: 33%;
+        height: 175px;
+        padding: 12px 20px;
+        margin: 8px 0;
+        box-sizing: border-box;
+    }
+
+}

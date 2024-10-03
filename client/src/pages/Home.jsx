@@ -12,16 +12,7 @@ const Home = ({ auth, authAction, logout, businesses, users, reviews }) => {
         <br />
         Explore through {reviews.length} helpful reviews
       </p>
-<<<<<<< Updated upstream
-      {!auth.id ? (
-        <>
-          <AuthForm authAction={authAction} mode="login" />
-          <AuthForm authAction={authAction} mode="register" />
-        </>
-      ) : null}
-=======
-     
->>>>>>> Stashed changes
+          
     </div>
   );
 };

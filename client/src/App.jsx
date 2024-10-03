@@ -4,17 +4,17 @@ import Users from "./pages/Users";
 import Businesses from "./pages/Businesses";
 import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
-<<<<<<< Updated upstream
-=======
 import Login from "./pages/Login";
 import Register from "./pages/Register";
->>>>>>> Stashed changes
+
 
 function App() {
   const [auth, setAuth] = useState({});
   const [users, setUsers] = useState([]);
   const [businesses, setBusinesses] = useState([]);
   const [reviews, setReviews] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     attemptLoginWithToken();
@@ -60,6 +60,45 @@ function App() {
     setAuth({});
   };
 
+  useEffect(() => {
+    const getBusiness = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/businesses`)
+        if (!response.ok) {
+          throw new Error('failed to get businesses');
+        }
+        const data = await response.json();
+        console.log(data);
+        setBusinesses(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    }
+    getBusiness();
+  }, []);
+
+  useEffect(() => {
+    const getUsers = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/users`)
+        if (!response.ok) {
+          throw new Error('failed to get users');
+        }
+        const data = await response.json();
+        console.log(data);
+        setUsers(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    }
+    getUsers();
+  }, []);
+
+
   return (
     <>
       <h1>Seen It Business Reviews</h1>
@@ -69,13 +108,7 @@ function App() {
         <Link to="/users">Users ({users.length})</Link>
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
-        ) : (
-<<<<<<< Updated upstream
-          <Link to="/">Register/Login</Link>
-=======
-          <Link to="/login">Login</Link>
->>>>>>> Stashed changes
-        )}
+        ) : (<Link to="/login">Login</Link> )}
       </nav>
       {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
       <Routes>
@@ -93,32 +126,30 @@ function App() {
         />
         <Route
           path="/businesses"
-          element={<Businesses businesses={businesses} />}
+          element={<Businesses businesses ={businesses} />}
         />
         <Route path="/users" element={<Users users={users} />} />
-        {!!auth.id && <Route path="/createReview" element={<CreateReview />} />}
-<<<<<<< Updated upstream
-      </Routes>
-=======
+        {!!auth.id && <Route path="/createreview" element={<CreateReview businesses={businesses}/>} />}
 
-        <Route path="/login" element={<Login 
-        authAction={authAction}
-        auth={auth}
-        businesses={businesses}
-        users={users}
-        reviews={reviews}/>}/>
+        <Route path="/login" element={<Login
+          authAction={authAction}
+          auth={auth}
+          businesses={businesses}
+          users={users}
+          reviews={reviews} />} />
 
         <Route path="/register" element={<Register
-        authAction={authAction}
-        auth={auth}
-        businesses={businesses}
-        users={users}
-        reviews={reviews}/>} />
-        
-        </Routes>
->>>>>>> Stashed changes
+          authAction={authAction}
+          auth={auth}
+          businesses={businesses}
+          users={users}
+          reviews={reviews} />} />
+
+      </Routes>
     </>
   );
+
 }
+
 
 export default App;
