@@ -8,7 +8,7 @@ import "./styles.css"
 function CreateReview({ businesses, auth }) {
   const [input, setInput] = useState("");
   const [stars, setStars] = useState(1);
-  const [businessReview, setBusinessReview] = useState(""); // Default to the first business
+  const [businessReview, setBusinessReview] = useState(businesses[0].id); // Default to the first business
   const [error, setError] = useState(null);
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,11 +28,15 @@ function CreateReview({ businesses, auth }) {
       //     input,
       //   }),
       // });
+      console.log(businessReview);
+      console.log(auth.id);
+      console.log(stars);
+      console.log(input);
        axios.post("http://localhost:3000/api/reviews", {
-        busname,
-        businesses,
+        busid: businessReview,
         stars,
         input,
+        userid: auth.id
       });
       console.log("two");
       console.log(response);
@@ -56,8 +60,8 @@ function CreateReview({ businesses, auth }) {
           value={businessReview}
           onChange={(e) => setBusinessReview(e.target.value)}
         >
-          {businesses?.map((business) => (
-            <option key={business.id} value={business.id}>
+          {businesses?.map((business, index) => (
+            <option key={business.id} value={business.id} >
               {business.busname}
             </option>
           ))}
