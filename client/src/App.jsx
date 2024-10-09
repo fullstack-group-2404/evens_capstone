@@ -79,6 +79,8 @@ function App() {
     }
   },[]);
 
+  //changes new
+
   useEffect(() => {
     getBusiness();
   }, [businesses]);
