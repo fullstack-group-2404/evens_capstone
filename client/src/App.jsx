@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { Link, Route, Routes } from "react-router-dom";
 import Users from "./pages/Users";
 import Businesses from "./pages/Businesses";
@@ -6,8 +6,9 @@ import CreateReview from "./pages/CreateReview";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import CreateBusiness from "./pages/CreateBusiness";
 
-
+// 
 function App() {
   const [auth, setAuth] = useState({});
   const [users, setUsers] = useState([]);
@@ -15,6 +16,7 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+
 
   useEffect(() => {
     attemptLoginWithToken();
@@ -60,24 +62,29 @@ function App() {
     setAuth({});
   };
 
-  useEffect(() => {
-    const getBusiness = async () => {
-      try {
-        const response = await fetch(`http://localhost:3000/api/businesses`)
-        if (!response.ok) {
-          throw new Error('failed to get businesses');
-        }
-        const data = await response.json();
-        console.log(data);
-        setBusinesses(data);
-        setLoading(false);
-      } catch (err) {
-        setError(err.message);
-        setLoading(false);
+
+  const getBusiness = useCallback(async () => {
+    try {
+      const response = await fetch(`http://localhost:3000/api/businesses`)
+      if (!response.ok) {
+        throw new Error('failed to get businesses');
       }
+      const data = await response.json();
+      console.log(data);
+      setBusinesses(data);
+      setLoading(false);
+    } catch (err) {
+      setError(err.message);
+      setLoading(false);
     }
+  },[]);
+
+  //changes new
+  //changes again
+
+  useEffect(() => {
     getBusiness();
-  }, []);
+  }, [businesses]);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -98,17 +105,17 @@ function App() {
     getUsers();
   }, []);
 
-
   return (
     <>
       <h1>Seen It Business Reviews</h1>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/businesses">Businesses ({businesses.length})</Link>
+        <Link to="/createbusiness">Add a Business</Link>
         <Link to="/users">Users ({users.length})</Link>
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
-        ) : (<Link to="/login">Login</Link> )}
+        ) : (<Link to="/login">Login</Link>)}
       </nav>
       {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
       <Routes>
@@ -126,10 +133,10 @@ function App() {
         />
         <Route
           path="/businesses"
-          element={<Businesses businesses ={businesses} />}
+          element={<Businesses businesses={businesses} />}
         />
         <Route path="/users" element={<Users users={users} />} />
-        {!!auth.id && <Route path="/createreview" element={<CreateReview businesses={businesses} auth={auth}/>} />}
+        {!!auth.id && <Route path="/createreview" element={<CreateReview businesses={businesses} auth={auth} />} />}
 
         <Route path="/login" element={<Login
           authAction={authAction}
@@ -144,6 +151,10 @@ function App() {
           businesses={businesses}
           users={users}
           reviews={reviews} />} />
+
+        <Route path="/createbusiness" element={<CreateBusiness
+          businesses={businesses} auth={auth} />} />
+
 
       </Routes>
     </>
