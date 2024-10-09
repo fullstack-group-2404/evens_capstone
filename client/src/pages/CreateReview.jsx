@@ -15,24 +15,7 @@ function CreateReview({ businesses, auth }) {
     console.log("firing");
     
     try { console.log("one");
-      // const response = await fetch("http://localhost:3000/api/reviews", {
-      //   method: "POST",
-      //   // headers: {
-      //   //   "Content-Type": "application/json",
-      //   //   Authorization: `Bearer ${localStorage.getItem("token")}`,
-      //   // },
-      //   body: JSON.stringify({
-      //     busname: auth.id,
-      //     businesses,
-      //     stars,
-      //     input,
-      //   }),
-      // });
-      console.log(businessReview);
-      console.log(auth.id);
-      console.log(stars);
-      console.log(input);
-       axios.post("http://localhost:3000/api/reviews", {
+        axios.post("http://localhost:3000/api/reviews", {
         busid: businessReview,
         stars,
         input,
