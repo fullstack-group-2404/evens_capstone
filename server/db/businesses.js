@@ -31,4 +31,14 @@ const createBusiness = async ({
     return response.rows;
   };
 
-  module.exports = {createBusiness, fetchBusinesses}
+  const fetchSingleBusinesses = async (id) => {
+    try{
+    const SQL = `SELECT * FROM businesses WHERE id=$1`;
+    const { rows: [business],
+      
+     } = await client.query(SQL, [id]);
+    return business;}
+    catch(err){console.log(err)}
+  };
+
+  module.exports = {createBusiness, fetchBusinesses, fetchSingleBusinesses}

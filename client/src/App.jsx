@@ -7,6 +7,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateBusiness from "./pages/CreateBusiness";
+import SingleBusiness from "./pages/SingleBusiness";
 
 // 
 function App() {
@@ -84,7 +85,7 @@ function App() {
 
   useEffect(() => {
     getBusiness();
-  }, [businesses]);
+  }, []);
 
   useEffect(() => {
     const getUsers = async () => {
@@ -154,6 +155,8 @@ function App() {
 
         <Route path="/createbusiness" element={<CreateBusiness
           businesses={businesses} auth={auth} />} />
+
+        <Route path ="/businesses/:id" element={<SingleBusiness businesses ={businesses}/>}/>
 
 
       </Routes>

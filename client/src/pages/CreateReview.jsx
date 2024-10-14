@@ -9,7 +9,9 @@ function CreateReview({ businesses, auth }) {
   const [input, setInput] = useState("");
   const [stars, setStars] = useState(1);
   const [businessReview, setBusinessReview] = useState(businesses[0].id); // Default to the first business
+  
   const [error, setError] = useState(null);
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("firing");

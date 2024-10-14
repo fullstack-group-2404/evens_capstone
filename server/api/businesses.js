@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { fetchBusinesses, createBusiness } = require("../db");
+const { fetchBusinesses, createBusiness, fetchSingleBusinesses } = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -22,6 +22,27 @@ router.post("/", async (req,res,next) =>{
   
   catch(err){next(err)}
 });
+
+router.get("/:id", async (req, res) => {
+  try{
+    const id = Number(req.params.id);
+    console.log(id);
+    if(isNaN(id) || req.params.id ===" "){
+      next({
+        name: "invalid format",
+        message: "Provided paramater is not a valid id"
+      });
+      return
+    }
+    const result = await fetchSingleBusinesses(id);
+    if(!result){
+      next({name:"Not Found", message: "No matching business"});
+      return
+    }
+    res.send(result);
+  }catch(err){next(err);}
+
+})
 
 
 
