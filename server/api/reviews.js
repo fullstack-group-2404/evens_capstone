@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { fetchReviews, createReview} = require("../db");
+const { fetchReviews, createReview, getBusinessReviews} = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -23,6 +23,7 @@ router.post("/", async (req,res,next) =>{
   catch(err){next(err)}
 })
   
+// router.get()
 
 
 module.exports = router;

@@ -156,7 +156,7 @@ function App() {
         <Route path="/createbusiness" element={<CreateBusiness
           businesses={businesses} auth={auth} />} />
 
-        <Route path ="/businesses/:id" element={<SingleBusiness businesses ={businesses}/>}/>
+        <Route path ="/businesses/:id" element={<SingleBusiness businesses ={businesses} reviews={reviews}/>}/>
 
 
       </Routes>
