@@ -30,4 +30,6 @@ function SingleBusiness() {
   )
 }
 
+//changes
+
 export default SingleBusiness
