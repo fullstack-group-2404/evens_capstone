@@ -1,3 +1,4 @@
+
 import AuthForm from "../components/AuthForm/AuthForm";
 
 const Home = ({ auth, authAction, logout, businesses, users, reviews }) => {
