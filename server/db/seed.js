@@ -264,8 +264,6 @@ const createTables = async () => {
     await client.query(`
     CREATE TABLE reviews(
     id SERIAL PRIMARY KEY,
-    busn VARCHAR(64) REFERENCES businesses(busname),
-    usern VARCHAR(20) REFERENCES users(username),
     stars INTEGER,
     input VARCHAR(1023),
     userid UUID REFERENCES users(id),

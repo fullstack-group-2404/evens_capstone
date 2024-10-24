@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 
 // changes
@@ -7,7 +7,11 @@ import axios from "axios";
 
 
 function Users ({users}){
+  const navigate = useNavigate();
 
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+}
      
   return (<div>
     <h1>Seen It has {users.length} users!</h1>
@@ -16,9 +20,12 @@ function Users ({users}){
 
           <div className="main-layout" key={person.id}>
             <div className="user-card">
-              Name: {person.username}
+              Name: {capitalizeFirstLetter(person.username)}
 
             </div>
+            <button onClick={() => navigate(`/userreviews/${person.id}`)}>
+            See Reviews From {capitalizeFirstLetter(person.username)}
+            </button>
 
           </div>
       )

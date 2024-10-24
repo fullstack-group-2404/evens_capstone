@@ -38,3 +38,36 @@
     color: green;
     
 }
+
+.business-card > img {
+    max-width: 45%;
+    border-radius: 8px;
+  }
+
+  .review-card{
+    border: solid darkgoldenrod;
+    color: black;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    height: 335px;
+    min-width: 30%;
+    max-width: 30%;
+    text-align: center;
+
+}
+
+.form-layout{
+    max-width: 30%;
+    margin: auto;
+}
+
+.center-content{
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: solid darkgoldenrod;
+    padding: px;
+}
