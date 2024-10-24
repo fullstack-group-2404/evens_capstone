@@ -66,6 +66,10 @@ function App() {
   };
 console.log(auth.id);
 
+function capitalizeFirstLetter(string) {
+  return string.charAt(0).toUpperCase() + string.slice(1);
+}
+
   const getBusiness = useCallback(async () => {
     try {
       const response = await fetch(`http://localhost:3000/api/businesses`)
