@@ -15,10 +15,10 @@ const AuthForm = ({ authAction, mode='login' })=> {
     }
   }
   return (
-    <form onSubmit={ submit }>
+    <form className='form-layout' onSubmit={ submit }>
       { !!error && <div className='error'>{ error }</div> }
-      <input value={ username } placeholder='username' onChange={ ev=> setUsername(ev.target.value)}/>
-      <input value={ password} placeholder='password' onChange={ ev=> setPassword(ev.target.value)}/>
+      <input value={ username } placeholder='username' onChange={ ev=> setUsername(ev.target.value)}></input>
+      <input value={ password} placeholder='password' onChange={ ev=> setPassword(ev.target.value)}></input>
       <button>{ mode }</button>
     </form>
   );

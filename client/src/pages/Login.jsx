@@ -3,7 +3,7 @@ import AuthForm from "../components/AuthForm/AuthForm";
 
 const Login = ({ auth, authAction, users }) => {
   return (
-    <div>
+    <div className="center-content">
       <h1>Login or Register</h1>
       {!auth.id ? (
         <>

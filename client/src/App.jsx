@@ -8,6 +8,8 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import CreateBusiness from "./pages/CreateBusiness";
 import SingleBusiness from "./pages/SingleBusiness";
+import UserReviews from "./pages/UserReviews";
+import NotAuth from "./pages/NotAuth";
 
 // 
 function App() {
@@ -62,7 +64,7 @@ function App() {
     window.localStorage.removeItem("token");
     setAuth({});
   };
-
+console.log(auth.id);
 
   const getBusiness = useCallback(async () => {
     try {
@@ -79,9 +81,6 @@ function App() {
       setLoading(false);
     }
   },[]);
-
-  //changes new
-  //changes again
 
   useEffect(() => {
     getBusiness();
@@ -106,13 +105,34 @@ function App() {
     getUsers();
   }, []);
 
+  useEffect(() => {
+    const getReviews = async () => {
+      try {
+        const response = await fetch(`http://localhost:3000/api/reviews`)
+        if (!response.ok) {
+          throw new Error('failed to get reviews');
+        }
+        const data = await response.json();
+        console.log(data);
+        setReviews(data);
+        setLoading(false);
+      } catch (err) {
+        setError(err.message);
+        setLoading(false);
+      }
+    }
+    getReviews();
+  }, []);
+
+
+
   return (
     <>
       <h1>Seen It Business Reviews</h1>
       <nav>
         <Link to="/">Home</Link>
         <Link to="/businesses">Businesses ({businesses.length})</Link>
-        <Link to="/createbusiness">Add a Business</Link>
+        {auth.id ? <Link to="/createbusiness">Add a Business</Link> : null}
         <Link to="/users">Users ({users.length})</Link>
         {auth.id ? (
           <Link to="/createReview">Create Review</Link>
@@ -153,12 +173,21 @@ function App() {
           users={users}
           reviews={reviews} />} />
 
+          
         <Route path="/createbusiness" element={<CreateBusiness
           businesses={businesses} auth={auth} />} />
 
+        <Route path="/userreviews/:id" element={<UserReviews
+          users={users} reviews={reviews} businesses={businesses} auth={auth} />} />
+
         <Route path ="/businesses/:id" element={<SingleBusiness businesses ={businesses} reviews={reviews}/>}/>
 
+        <Route
+          path="/notauthorized"
+          element={<NotAuth />}
+        />
 
+       
       </Routes>
     </>
   );

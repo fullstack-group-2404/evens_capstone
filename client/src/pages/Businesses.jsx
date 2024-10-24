@@ -20,8 +20,6 @@ function Businesses({ businesses }) {
             <img src={business.busimage} />
             Category: {business.category}
             <br></br>
-            Description: {business.description}
-            <br></br>
             <button onClick={() => navigate(`/businesses/${business.id}`)}>
               See Business Details
             </button>

@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { fetchReviews, createReview, getBusinessReviews, fetchUsers} = require("../db");
+const { fetchReviews, createReview, getBusinessReviews, fetchUsers, getUserReviews, deleteReview} = require("../db");
 
 router.get("/", async (req, res, next) => {
   try {
@@ -29,8 +29,6 @@ router.get("/businesses/:businessId", async (req,res,next) =>{
   try{
     const reviews = await getBusinessReviews(businessId);
     const users = await fetchUsers();
-    console.log(users);
-    console.log(reviews);
     const reviewsWithUsername = 
        reviews.map(review=>{
         const reviewsResult = users.find(user=> user.id === review.userid)
@@ -40,10 +38,27 @@ router.get("/businesses/:businessId", async (req,res,next) =>{
     res.send(reviewsWithUsername);
 
   }catch(err){next(err)};
+  })
+
+  router.get("/users/:id", async (req,res,next) =>{
+    console.log("getting user reviews");
+    const {id} = req.params;
+    try{
+      const reviews = await getUserReviews(id);
+      
   
+      res.send(reviews);
+  
+    }catch(err){next(err)};
+    })
 
-
-})
+    router.delete('/:id', async(req, res, next)=>{
+      try{
+        const deletedReview = await deleteReview(req.params.id);
+        res.send("review deleted")
+      }catch (err) {
+        next(err);
+    }});
 
 
 module.exports = router;
