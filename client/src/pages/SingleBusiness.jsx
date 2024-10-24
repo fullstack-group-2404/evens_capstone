@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
+import Rating from '@mui/material/Rating';
 import axios from "axios";
 import "./styles.css";
 
@@ -48,7 +49,8 @@ function SingleBusiness() {
       {reviewData?.map(function (review) {
         return (
           <div className="review-card" key={review.id}>
-            <h2>STARS:{review.stars}</h2>
+            <h2><Rating name="read-only" value={review.stars} readOnly />
+            </h2>
             <br></br>
             <p>What this Seen It! member has to say about {review.busname}: {review.input}</p>
             <br></br>
