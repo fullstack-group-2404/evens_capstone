@@ -35,9 +35,9 @@ function CreateReview({ businesses, auth, users }) {
       setError(error.message);
     }
   };
-  return (<div>
+  return (<div className='center-home'>
     <h1>Create a Review</h1>
-    <div className='review-form' >
+    <div >
     <form onSubmit={handleSubmit}>
       <label>
         Business:
@@ -64,15 +64,17 @@ function CreateReview({ businesses, auth, users }) {
         />
       </label>
       <br />
-      <label>
-        Review:
-        <input type = "text"
+      Review:
+      <br/>
+      <label >
+        
+        <textarea className='field'
           value={input}
           onChange={(e) => setInput(e.target.value)}
         />
       </label>
       <br />
-      <button type="submit">Submit Review</button>
+      <button className='button-review' type="submit">Submit Review</button>
     </form>
     </div>
   </div>

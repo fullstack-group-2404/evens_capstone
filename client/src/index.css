@@ -1,6 +1,6 @@
 body {
   font-family: verdana;
-  background-color: #FEE715;
+  background-color: lightyellow;
   color: #101820;
 }
 
@@ -20,10 +20,39 @@ form > * {
 nav {
   display: flex;
   justify-content: space-around;
+  
+}
+nav:link{
+  color:black
+}
+a:visited {
+  color: black;
 }
 
 .error {
   background-color: tomato;
   padding: 0.5rem;
   color: cornSilk;
+}
+
+.center-content{
+  margin-top: 35px;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+  border: solid darkgoldenrod;
+  background-color: white;
+}
+
+.logout{
+  position: fixed;
+  bottom: 2%;
+  right: 2%;
+}
+
+.thumbs-up{
+  position:absolute;
+  bottom: 2%;
+  left: 2%;
+  z-index: -10;
 }

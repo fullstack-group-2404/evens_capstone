@@ -23,21 +23,23 @@
 
 }
 
-.review-form{
-    input[type=text]{
-        width: 33%;
-        height: 175px;
-        padding: 12px 20px;
-        margin: 8px 0;
-        box-sizing: border-box;
-    }
 
+
+.field{
+    width: 45%;
+    height: 125px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    overflow: hidden;
 }
 
-.business-form{
-    color: green;
-    
-}
+
+
+
 
 .business-card > img {
     max-width: 45%;
@@ -69,5 +71,69 @@
     margin-right: auto;
     width: 50%;
     border: solid darkgoldenrod;
-    padding: px;
+    z-index: -100;
+}
+
+.center-home{
+    margin-top: 35px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: solid darkgoldenrod;
+    text-align: center;
+    line-height: 2;
+    z-index: -100;
+}
+
+.center-busform{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+    border: solid darkgoldenrod;
+    text-align: center;
+    justify-content: center;
+    line-height: 2;
+
+    
+}
+.new-field{
+    width: 55%;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    overflow: hidden;
+}
+
+.new-field-two{
+    width: 55%;
+    height: 125px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
+    resize: none;
+    overflow: hidden;
+}
+
+
+.form-size{
+    width:100%;
+}
+
+.button-review{
+    width: 15%;
+}
+
+.new-button-review{
+    width: 15%;
+    bottom:0%;
+    left:0%;
 }

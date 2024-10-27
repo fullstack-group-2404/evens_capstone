@@ -36,24 +36,33 @@ function CreateBusiness({ businesses, auth }) {
         }
     };
     return (
-        <div>
+        <div className='center-busform'>
             <h1>Add Your Own Business To Seen It Reviews!</h1>
-            <form className='business-form' onSubmit={handleSubmit}>
-                <label>
-                <input onChange={(e) => setBusName(e.target.value)} placeholder='Business Name' />
+            <br></br>
+            
+            <form  className="form-size" onSubmit={handleSubmit}>
+                <h2>Business Name</h2>
+                <label >
+                <input  className='new-field' onChange={(e) => setBusName(e.target.value)} placeholder='Business Name' />
                 </label>
-                <br></br>
-                <input onChange={(e) => setCategory(e.target.value)} placeholder='Category' />
-                <br></br>
-                <input onChange={(e) => setDescription(e.target.value)} placeholder='Description' />
-                <br></br>
-                <input onChange={(e) => setImageUrl(e.target.value)} placeholder='Image URL' />
-                <br></br>
-                <button type='submit'>Add Business</button>
+                <h2>Category</h2>
+                <label>
+                <input  className='new-field' onChange={(e) => setCategory(e.target.value)} placeholder='Category' />
+                </label>
+                <h2>Business Description</h2>
+                <label>
+                <textarea  className='new-field-two' onChange={(e) => setDescription(e.target.value)} />
+                </label>
+                <h2>Image for Business</h2>
+                <label>
+                <input   className='new-field' onChange={(e) => setImageUrl(e.target.value)} placeholder='Image URL' />
+                </label>
+                <button className='new-button-review' type='submit'>Add Business</button>
 
-
+                
 
             </form>
+            
 
 
 

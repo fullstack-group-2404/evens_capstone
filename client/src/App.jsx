@@ -10,6 +10,7 @@ import CreateBusiness from "./pages/CreateBusiness";
 import SingleBusiness from "./pages/SingleBusiness";
 import UserReviews from "./pages/UserReviews";
 import NotAuth from "./pages/NotAuth";
+import "./index.css";
 
 // 
 function App() {
@@ -131,7 +132,7 @@ function capitalizeFirstLetter(string) {
 
 
   return (
-    <>
+    <div>
       <h1>Seen It Business Reviews</h1>
       <nav>
         <Link to="/">Home</Link>
@@ -142,7 +143,14 @@ function capitalizeFirstLetter(string) {
           <Link to="/createReview">Create Review</Link>
         ) : (<Link to="/login">Login</Link>)}
       </nav>
-      {auth.id && <button onClick={logout}>Logout {auth.username}</button>}
+      <div className="logout">
+      {auth.id && <button onClick={logout}>Logout {capitalizeFirstLetter(auth.username)}</button>}
+      
+      </div>
+        <div className="thumbs-up">
+        <img src="/images/349027.png" alt="approved"></img>
+        </div>
+      
       <Routes>
         <Route
           path="/"
@@ -193,7 +201,7 @@ function capitalizeFirstLetter(string) {
 
        
       </Routes>
-    </>
+    </div>
   );
 
 }
