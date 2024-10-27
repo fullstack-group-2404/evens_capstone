@@ -4,7 +4,7 @@ const Home = ({ auth, authAction, logout, businesses, users, reviews }) => {
   return (
     <div>
       <h1>Home</h1>
-      <p>
+      <p className="center-home">
         See reviews for the {businesses.length}{" "}
         businesses on our website
         <br />

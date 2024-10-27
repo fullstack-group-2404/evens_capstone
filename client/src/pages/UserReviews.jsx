@@ -39,10 +39,15 @@ export default function UserReviews({ auth, users }) {
     else {
       axios.delete(`http://localhost:3000/api/reviews/${id}`)
         .then((response) => console.log(response))
-        // .then(window.location.reload())
-        .catch((err) => console.log('error deleting review', err));
 
+        .then(setUserReviewData(userReviewData.filter(userReviewData => userReviewData.id !== id)))
+       
+        .catch((err) => console.log('error deleting review', err))
+
+        
+        
     }
+    
   }
 
   return (
