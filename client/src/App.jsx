@@ -20,7 +20,9 @@ function App() {
   const [reviews, setReviews] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+ 
 
+  
 
   useEffect(() => {
     attemptLoginWithToken();
@@ -65,11 +67,11 @@ function App() {
     window.localStorage.removeItem("token");
     setAuth({});
   };
-console.log(auth.id);
 
-function capitalizeFirstLetter(string) {
-  return string.charAt(0).toUpperCase() + string.slice(1);
-}
+
+  function capitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   const getBusiness = useCallback(async () => {
     try {
@@ -85,7 +87,7 @@ function capitalizeFirstLetter(string) {
       setError(err.message);
       setLoading(false);
     }
-  },[]);
+  }, []);
 
   useEffect(() => {
     getBusiness();
@@ -144,13 +146,13 @@ function capitalizeFirstLetter(string) {
         ) : (<Link to="/login">Login</Link>)}
       </nav>
       <div className="logout">
-      {auth.id && <button onClick={logout}>Logout {capitalizeFirstLetter(auth.username)}</button>}
-      
+        {auth.id && <button onClick={logout}>Logout {capitalizeFirstLetter(auth.username)}</button>}
+
       </div>
-        <div className="thumbs-up">
+      <div className="thumbs-up">
         <img src="/images/349027.png" alt="approved"></img>
-        </div>
-      
+      </div>
+
       <Routes>
         <Route
           path="/"
@@ -185,21 +187,21 @@ function capitalizeFirstLetter(string) {
           users={users}
           reviews={reviews} />} />
 
-          
+
         <Route path="/createbusiness" element={<CreateBusiness
-          businesses={businesses} auth={auth} />} />
+          businesses={businesses} auth={auth} getBusiness={getBusiness}/>} />
 
         <Route path="/userreviews/:id" element={<UserReviews
           users={users} reviews={reviews} businesses={businesses} auth={auth} />} />
 
-        <Route path ="/businesses/:id" element={<SingleBusiness businesses ={businesses} reviews={reviews}/>}/>
+        <Route path="/businesses/:id" element={<SingleBusiness businesses={businesses} reviews={reviews} />} />
 
         <Route
           path="/notauthorized"
           element={<NotAuth />}
         />
 
-       
+
       </Routes>
     </div>
   );
