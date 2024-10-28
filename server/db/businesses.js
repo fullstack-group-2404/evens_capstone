@@ -15,7 +15,7 @@ const createBusiness = async ({
         busName,
         category,
         description,
-        busImage || "https://en.wikipedia.org/wiki/Retail#/media/File:AA446b_copy.jpeg",
+        busImage || "https://pix4free.org/assets/library/2021-09-29/originals/business-growth.jpg",
       ]);
       return business;
     } catch (err) {

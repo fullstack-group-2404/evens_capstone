@@ -24,13 +24,16 @@ function CreateReview({ businesses, auth, users }) {
         userid: auth.id,
         busid: businessReview
       });
+
+      setInput("");
+      setStars(1);
+      setBusinessReview(businesses[0].id);
+      alert("Review submitted successfully!");
       
       if (!response.ok) {
         throw new Error("Failed to submit review");
       }
-      setInput("");
-      setStars(1);
-      alert("Review submitted successfully!");
+      
     } catch (error) {
       setError(error.message);
     }
