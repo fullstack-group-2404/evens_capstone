@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
+
 const { fetchBusinesses, createBusiness, fetchSingleBusinesses } = require("../db");
 
 router.get("/", async (req, res, next) => {

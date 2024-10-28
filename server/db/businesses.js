@@ -40,5 +40,6 @@ const createBusiness = async ({
     return business;}
     catch(err){console.log(err)}
   };
+  // changes
 
   module.exports = {createBusiness, fetchBusinesses, fetchSingleBusinesses}
