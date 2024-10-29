@@ -8,7 +8,9 @@ const client = new pg.Client({
   database: process.env.DATABASE,
   port: process.env.PORT,
   host: process.env.HOST,
-  ssl: true
+  ssl: process.env.NODE_ENV === "production"
+  ? { rejectUnauthorized: false }
+  : false,
 
 
 });
