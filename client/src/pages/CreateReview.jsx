@@ -18,7 +18,7 @@ function CreateReview({ businesses, auth, users }) {
     console.log("firing");
     
     try { 
-        axios.post("http://localhost:3000/api/reviews", {
+        axios.post("${import.meta.env.VITE_BASEURL}/api/reviews", {
         stars,
         input,       
         userid: auth.id,

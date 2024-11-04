@@ -14,7 +14,7 @@ function SingleBusiness() {
   };
 
   useEffect(() => {
-    axios(`http://localhost:3000/api/businesses/${id}`)
+    axios(`${import.meta.env.VITE_BASEURL}/api/businesses/${id}`)
       .then((response) => {
 
         setBusiness(response.data)
@@ -24,7 +24,7 @@ function SingleBusiness() {
   }, [id]);
 
   useEffect(() => {
-    axios(`http://localhost:3000/api/reviews/businesses/${id}`)
+    axios(`${import.meta.env.VITE_BASEURL}/api/reviews/businesses/${id}`)
       .then((response) => {
         console.log(response.data)
         setReviewData(response.data)

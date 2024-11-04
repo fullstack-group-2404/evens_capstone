@@ -75,7 +75,7 @@ function App() {
 
   const getBusiness = useCallback(async () => {
     try {
-      const response = await fetch(`http://localhost:3000/api/businesses`)
+      const response = await fetch(`${import.meta.env.VITE_BASEURL}/api/businesses`)
       if (!response.ok) {
         throw new Error('failed to get businesses');
       }
@@ -96,7 +96,7 @@ function App() {
   useEffect(() => {
     const getUsers = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/users`)
+        const response = await fetch(`${import.meta.env.VITE_BASEURL}/api/users`)
         if (!response.ok) {
           throw new Error('failed to get users');
         }
@@ -115,7 +115,7 @@ function App() {
   useEffect(() => {
     const getReviews = async () => {
       try {
-        const response = await fetch(`http://localhost:3000/api/reviews`)
+        const response = await fetch(`${import.meta.env.VITE_BASEURL}/api/reviews`)
         if (!response.ok) {
           throw new Error('failed to get reviews');
         }
