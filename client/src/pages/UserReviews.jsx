@@ -20,7 +20,7 @@ export default function UserReviews({ auth, users }) {
   
 
   useEffect(() => {
-    axios(`http://localhost:3000/api/reviews/users/${id}`)
+    axios(`${import.meta.env.VITE_BASEURL}/api/reviews/users/${id}`)
       .then(async (response) => {
         const reviews = response.data;
         console.log(reviews);
@@ -37,7 +37,7 @@ export default function UserReviews({ auth, users }) {
       navigate(`/notauthorized/`)
     }
     else {
-      axios.delete(`http://localhost:3000/api/reviews/${id}`)
+      axios.delete(`${import.meta.env.VITE_BASEURL}/api/reviews/${id}`)
         .then((response) => console.log(response))
 
         .then(setUserReviewData(userReviewData.filter(userReviewData => userReviewData.id !== id)))
