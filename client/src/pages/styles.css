@@ -49,6 +49,7 @@
 
   .review-card{
     border: solid darkgoldenrod;
+    text-shadow: white 1px 0 10px;
     color: black;
     display:flex;
     flex-direction: column;
@@ -138,4 +139,16 @@
     width: 15%;
     bottom:0%;
     left:0%;
+}
+
+.new-layout{
+    
+    background-color: antiquewhite;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    flex-wrap: wrap;
 }
