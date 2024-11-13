@@ -16,7 +16,7 @@ function CreateBusiness({ businesses, auth, getBusiness }) {
         console.log("firing");
 
         try {
-            axios.post("${import.meta.env.VITE_BASEURL}/api/businesses", {
+            axios.post(`${import.meta.env.VITE_BASEURL}/api/businesses`, {
                 busName,
                 category,
                 description,

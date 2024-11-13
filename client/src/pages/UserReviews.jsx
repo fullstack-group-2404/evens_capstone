@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { Link, useParams, useNavigate } from "react-router-dom";
 import Rating from '@mui/material/Rating';
 import axios from "axios";
+import DeleteIcon from '@mui/icons-material/Delete';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+
 
 export default function UserReviews({ auth, users }) {
   const { id } = useParams();
@@ -68,9 +72,11 @@ export default function UserReviews({ auth, users }) {
               <br></br>
               This Review by Seen It! user: {capitalizeFirstLetter(data.username)}
               <br></br>
-              <button onClick={() => handleSubmit(data.id)}>
+              <Stack direction="row" spacing={2}>
+              <Button variant="outlined" startIcon={<DeleteIcon />} onClick={() => handleSubmit(data.id)}>
                 Delete Review
-              </button>
+              </Button>
+              </Stack>
             </div>
           )
         })}
