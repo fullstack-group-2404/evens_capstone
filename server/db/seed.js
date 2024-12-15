@@ -232,6 +232,10 @@ const businesses = [
 //   {}
 // ]
 
+// CREATE TAble newusers;
+
+// INSERT INTO newusers FROM users WHERE created_at > 07/01/2024;
+
 const dropTables = async () => {
   try {
     await client.query(`DROP TABLE IF EXISTS users CASCADE`);
@@ -250,6 +254,11 @@ const createTables = async () => {
       username VARCHAR(20) UNIQUE NOT NULL,
       password VARCHAR(255) NOT NULL
     )`);
+
+    // ALTER TABLE users ADD column date_of_birth (DATE NOT NULL);
+    // DELETE from users;
+    // UPDATE users SET username = newusername WHERE id = #;
+    // 
 
     await client.query(`
     CREATE TABLE businesses(
