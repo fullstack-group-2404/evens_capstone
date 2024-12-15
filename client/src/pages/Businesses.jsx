@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import * as React from 'react';
 import { Link, useParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "./styles.css"
@@ -22,13 +21,15 @@ function Businesses({ businesses }) {
 
       {businesses?.map(function (business) {
           return (<div key={business.id}>
-            <Card sx={{ maxWidth: 345 }}>
-              <CardMedia
-                sx={{ height: 140 }}
-                img src = {business.busimage}
-                title={business.busname}
-              />
-              <CardContent>
+            <Card sx={{ minWidth: 345 }}>
+            <CardContent>
+                        
+               {business.busImage}
+            
+              
+              <Typography gutterBottom variant="h5" component="div">
+          {business.busname}
+        </Typography>
               Category: {business.category}
 
               </CardContent>
